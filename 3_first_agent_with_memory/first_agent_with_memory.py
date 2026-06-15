@@ -30,7 +30,7 @@ llm = ChatGroq(model="llama-3.3-70b-versatile")
 #--tool defining
 
 @tool
-def divide(a:int , b:int)->int:
+def divide(a:int , b:int)->float:
     """Divide a by b
 
     Args:
@@ -38,7 +38,7 @@ def divide(a:int , b:int)->int:
         b : second integer
 
     Returns:
-        int : output integer
+        float : output integer
     
     """
     return a/b
@@ -77,9 +77,16 @@ config_mem = {'configurable':{'thread_id':"1"}}
 
 res_ans = agent.invoke({'messages':"Hey my name is archit"} , config=config_mem)
 
+
 print(res_ans['messages'][-1].content)
 
-res_qsn = agent.invoke({"messages":"Hey , what is my name ?"} , config=config_mem)
+# res_qsn = agent.invoke({"messages":"What is my name ?"} , config=config_mem)
+
+res_qsn = agent.invoke({"messages":"what is current news about India and what is 120 divided by 6"} , config=config_mem)
+
+print("\n \n")
+
+print(res_qsn)
 
 print("\n \n")
 
